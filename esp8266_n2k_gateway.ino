@@ -19,7 +19,7 @@
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
 
-#include "WebSocketStream.h"
+#include "WebSocketBufferedStream.h"
 //#include <Time.h>  // 
 
 // Beware, the following constants MUST be defined before including NMEA2000_CAN.h
@@ -84,7 +84,7 @@ WebSocketsServer webSocket = WebSocketsServer(81);
 WiFiManager wifiManager;
 
 //Stream *OutputStream = &Serial;
-WebSocketStream *OutputStream;
+WebSocketBufferedStream *OutputStream;
 
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t len) {
 
@@ -208,7 +208,7 @@ void setup() {
   webSocket.onEvent(webSocketEvent);
 
 
-  OutputStream = new WebSocketStream(&webSocket,&Serial);   // Combine webSocket and Serial in one WebSocketStream, print-calls to stream writes to both Serial and WebSocket
+  OutputStream = new WebSocketBufferedStream(&webSocket,&Serial);   // Combine webSocket and Serial in one WebSocketStream, print-calls to stream writes to both Serial and WebSocket
   
   OutputStream->printf("[SETUP] Starting mDNS responder...\n");
   if(MDNS.begin("esp8266")) {
