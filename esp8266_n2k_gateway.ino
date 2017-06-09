@@ -77,7 +77,7 @@ tNMEA2000Handler N2kHandlers[]={
 // //  {128267L,&WaterDepth},
    //{129025L,&Position},
    // {129026L,&COGSOG},
-   // {129029L,&GNSS},
+   {129029L,&GNSS},
 // //  {130310L,&OutsideEnvironmental},
 // //  {130312L,&Temperature},
 // //  {130316L,&TemperatureExt},
@@ -408,48 +408,48 @@ void EngDynParams(const tN2kMsg &N2kMsg) {
 
 
 
-// //*****************************************************************************
-// void GNSS(const tN2kMsg &N2kMsg) {
-//     unsigned char SID;
-//     uint16_t Days;
-//     double Secs; 
-//     double Lat;
-//     double Long;
-//     double Alti; 
-//     tN2kGNSStype GNSSt;
-//     tN2kGNSSmethod GNSSm;
-//     unsigned char nSat;
-//     double HDOP;
-//     double PDOP;
-//     double GeoSep;
-//     unsigned char nRefStat;
-//     tN2kGNSStype RefStatType;
-//     uint16_t RefStatID;
-//     double AgeOfCorr;
+//*****************************************************************************
+void GNSS(const tN2kMsg &N2kMsg) {
+    unsigned char SID;
+    uint16_t Days;
+    double Secs; 
+    double Lat;
+    double Long;
+    double Alti; 
+    tN2kGNSStype GNSSt;
+    tN2kGNSSmethod GNSSm;
+    unsigned char nSat;
+    double HDOP;
+    double PDOP;
+    double GeoSep;
+    unsigned char nRefStat;
+    tN2kGNSStype RefStatType;
+    uint16_t RefStatID;
+    double AgeOfCorr;
 
-//     if (ParseN2kGNSS(N2kMsg,SID,Days,Secs,
-//                   Lat,Long,Alti,
-//                   GNSSt,GNSSm,
-//                   nSat,HDOP,PDOP,GeoSep,
-//                   nRefStat,RefStatType,RefStatID,
-//                   AgeOfCorr) ) {
-//       PrintLabelValWithConversionCheckUnDef(F("GNSS info: days since 1.1.1970: "),Days,0,false);
-//       PrintLabelValWithConversionCheckUnDef(F("  seconds since midnight: "),Secs,0,false);
-//       PrintLabelValWithConversionCheckUnDef(F("  latitude: "),Lat,0,false);
-//       PrintLabelValWithConversionCheckUnDef(F("  longitude: "),Long,0,false);
-//       PrintLabelValWithConversionCheckUnDef(F("  altitude: (m): "),Alti,0,false);
-//       PrintLabelValWithConversionCheckUnDef(F("  satellite count: "),nSat,0,false);
-//       PrintLabelValWithConversionCheckUnDef(F("  HDOP: "),HDOP,0,false);
-//       PrintLabelValWithConversionCheckUnDef(F("  PDOP: "),PDOP,0,false);
-//       PrintLabelValWithConversionCheckUnDef(F("  geoidal separation: "),GeoSep,0,false);
-//       PrintLabelValWithConversionCheckUnDef(F("  reference stations: "),nRefStat,0,false);
-//                          OutputStream->print(F("  GNSS type: ")); PrintN2kEnumType(GNSSt,OutputStream,false);
-//       //                   OutputStream->print(F("  GNSS method: ")); PrintN2kEnumType(GNSSm,OutputStream);
-//     } else {
-//       OutputStream->println(N2K_ERROR_PARSE); 
-//     }
-//     OutputStream->flush();
-// }
+    if (ParseN2kGNSS(N2kMsg,SID,Days,Secs,
+                  Lat,Long,Alti,
+                  GNSSt,GNSSm,
+                  nSat,HDOP,PDOP,GeoSep,
+                  nRefStat,RefStatType,RefStatID,
+                  AgeOfCorr) ) {
+      PrintLabelValWithConversionCheckUnDef(F("GNSS info: days since 1.1.1970: "),Days,0,false);
+      PrintLabelValWithConversionCheckUnDef(F("  seconds since midnight: "),Secs,0,false);
+      PrintLabelValWithConversionCheckUnDef(F("  latitude: "),Lat,0,false);
+      PrintLabelValWithConversionCheckUnDef(F("  longitude: "),Long,0,false);
+      PrintLabelValWithConversionCheckUnDef(F("  altitude: (m): "),Alti,0,false);
+      PrintLabelValWithConversionCheckUnDef(F("  satellite count: "),nSat,0,false);
+      PrintLabelValWithConversionCheckUnDef(F("  HDOP: "),HDOP,0,false);
+      PrintLabelValWithConversionCheckUnDef(F("  PDOP: "),PDOP,0,false);
+      PrintLabelValWithConversionCheckUnDef(F("  geoidal separation: "),GeoSep,0,false);
+      PrintLabelValWithConversionCheckUnDef(F("  reference stations: "),nRefStat,0,false);
+                         OutputStream->print(F("  GNSS type: ")); PrintN2kEnumType(GNSSt,OutputStream,false);
+      //                   OutputStream->print(F("  GNSS method: ")); PrintN2kEnumType(GNSSm,OutputStream);
+    } else {
+      OutputStream->println(N2K_ERROR_PARSE); 
+    }
+    OutputStream->flush();
+}
 
 // //*****************************************************************************
 // void ICACHE_FLASH_ATTR OutsideEnvironmental(const tN2kMsg &N2kMsg) {
