@@ -77,7 +77,7 @@ tNMEA2000Handler N2kHandlers[]={
 // //  {128267L,&WaterDepth},
    //{129025L,&Position},
    // {129026L,&COGSOG},
-   {129029L,&GNSS},
+   //{129029L,&GNSS},
 // //  {130310L,&OutsideEnvironmental},
 // //  {130312L,&Temperature},
 // //  {130316L,&TemperatureExt},
